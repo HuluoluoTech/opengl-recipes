@@ -12,6 +12,7 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+#include "00.triangle.h"
 
 // GLFW function declarations
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
@@ -21,6 +22,13 @@ void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode
 const unsigned int SCREEN_WIDTH = 800;
 // The height of the screen
 const unsigned int SCREEN_HEIGHT = 600;
+
+/********************************
+ * 
+ * recipes ins
+ * 
+ * *****************************/
+_00Triangle _00Triangle_Ins;
 
 int main(int argc, char *argv[])
 {
@@ -49,6 +57,9 @@ int main(int argc, char *argv[])
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+
+    _00Triangle_Ins.LoadShader();
+    _00Triangle_Ins.GenBuffer();
 
     // sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
     // callback signature:
@@ -87,10 +98,11 @@ int main(int argc, char *argv[])
         // processes only those events that are already in the event queue and then returns immediately.
         glfwPollEvents();
 
-        // render
+        // render Here
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // specify clear values for the color buffers
         glClear(GL_COLOR_BUFFER_BIT); // clear buffers to preset values, glClear sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil. 
+        _00Triangle_Ins.Display();
 
         // Swaps the front and back buffers of the specified window. 
         /***********************************************************************************
@@ -133,6 +145,10 @@ int main(int argc, char *argv[])
 void KeyCallback(GLFWwindow* window, int key, int scancode, int action, int mode)
 {
     std::cout << "Key callback...key : " << key << std::endl;
+    if(key == GLFW_KEY_ESCAPE && action == GLFW_PRESS) 
+    {
+        glfwSetWindowShouldClose(window, true);
+    }
 }
 
 /**

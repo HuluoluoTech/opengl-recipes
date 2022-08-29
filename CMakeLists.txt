@@ -4,7 +4,7 @@ if (POLICY CMP0074)
   cmake_policy(SET CMP0074 NEW)
 endif ()
 
-set(PROJECTNAME OpenGLTemplate)
+set(PROJECTNAME recipes)
 project(${PROJECTNAME})
 
 set(CMAKE_CXX_STANDARD 20) # this does nothing for MSVC, use target_compile_options below
