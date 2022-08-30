@@ -17,6 +17,7 @@
 #include "00.triangle.h"
 #include "01.rectangle.h"
 #include "02.Uniform.h"
+#include "03.VertexMore.h"
 
 // GLFW function declarations
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
@@ -34,7 +35,8 @@ const unsigned int SCREEN_HEIGHT = 600;
  * *****************************/
 // _00Triangle _00Triangle_Ins;
 // _01Rectangle _01Rectangle_Ins;
-_02Uniform _02Uniform_Ins;
+// _02Uniform _02Uniform_Ins;
+_03VertexMore _03VertexMore_Ins;
 
 int main(int argc, char *argv[])
 {
@@ -70,8 +72,8 @@ int main(int argc, char *argv[])
         // _00Triangle_Ins.LoadShader();
         // _00Triangle_Ins.GenBuffer();
 
-        _02Uniform_Ins.LoadShader();
-        _02Uniform_Ins.GenBuffer();
+        _03VertexMore_Ins.LoadShader();
+        _03VertexMore_Ins.GenBuffer();
     }
 
     // sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
@@ -117,13 +119,13 @@ int main(int argc, char *argv[])
 
         // render Here
         // ------
-        glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // specify clear values for the color buffers
-        glClear(GL_COLOR_BUFFER_BIT); // clear buffers to preset values, glClear sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil. 
-        
+        glClearColor(0.2f, 0.3f, 0.3f, 1.0f);
+        glClear(GL_COLOR_BUFFER_BIT);
+                
         // Step 2: Rendering
         {
             // _00Triangle_Ins.Display();
-            _02Uniform_Ins.Display();
+            _03VertexMore_Ins.Display();
         }
 
         // Swaps the front and back buffers of the specified window. 
@@ -149,6 +151,7 @@ int main(int argc, char *argv[])
     glfwDestroyWindow(window);
 
     std::cout << "Ready to Exit..." << std::endl;
+    // _03VertexMore_Ins.Clear();
 
     // Terminates the GLFW library. 
     // This function destroys all remaining windows and cursors, restores any modified gamma ramps and frees any other allocated resources. 
