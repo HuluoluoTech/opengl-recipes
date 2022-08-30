@@ -18,6 +18,7 @@
 #include "01.rectangle.h"
 #include "02.Uniform.h"
 #include "03.VertexMore.h"
+#include "04.Texture.h"
 
 // GLFW function declarations
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
@@ -36,7 +37,8 @@ const unsigned int SCREEN_HEIGHT = 600;
 // _00Triangle _00Triangle_Ins;
 // _01Rectangle _01Rectangle_Ins;
 // _02Uniform _02Uniform_Ins;
-_03VertexMore _03VertexMore_Ins;
+// _03VertexMore _03VertexMore_Ins;
+_04Texture _04Texture_Ins;
 
 int main(int argc, char *argv[])
 {
@@ -72,8 +74,9 @@ int main(int argc, char *argv[])
         // _00Triangle_Ins.LoadShader();
         // _00Triangle_Ins.GenBuffer();
 
-        _03VertexMore_Ins.LoadShader();
-        _03VertexMore_Ins.GenBuffer();
+        _04Texture_Ins.LoadShader();
+        _04Texture_Ins.GenBuffer();
+        _04Texture_Ins.LoadTexture();
     }
 
     // sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
@@ -125,7 +128,7 @@ int main(int argc, char *argv[])
         // Step 2: Rendering
         {
             // _00Triangle_Ins.Display();
-            _03VertexMore_Ins.Display();
+            _04Texture_Ins.Display();
         }
 
         // Swaps the front and back buffers of the specified window. 
