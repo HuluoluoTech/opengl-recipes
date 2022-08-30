@@ -1,3 +1,7 @@
-# OpenGL-Template
+# OpenGL-Recipes
 
-Where amazing happens
+```shell
+mkdir my_build & cd my_build
+cmake .. & make
+./recipes
+```
