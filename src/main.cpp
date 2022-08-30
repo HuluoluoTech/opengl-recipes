@@ -13,6 +13,7 @@
 
 #include <iostream>
 #include "00.triangle.h"
+#include "01.rectangle.h"
 
 // GLFW function declarations
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
@@ -29,6 +30,7 @@ const unsigned int SCREEN_HEIGHT = 600;
  * 
  * *****************************/
 _00Triangle _00Triangle_Ins;
+_01Rectangle _01Rectangle_Ins;
 
 int main(int argc, char *argv[])
 {
@@ -58,8 +60,14 @@ int main(int argc, char *argv[])
         return -1;
     }
 
-    _00Triangle_Ins.LoadShader();
-    _00Triangle_Ins.GenBuffer();
+    // Step 1:
+    {
+        // _00Triangle_Ins.LoadShader();
+        // _00Triangle_Ins.GenBuffer();
+
+        _01Rectangle_Ins.LoadShader();
+        _01Rectangle_Ins.GenBuffer();
+    }
 
     // sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
     // callback signature:
@@ -79,6 +87,10 @@ int main(int argc, char *argv[])
     // GL_ALPHA_TEST / GL_BLEND / GL_DEPTH_TEST / GL_CULL_FACE / etc...
     glEnable(GL_BLEND);
     glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+
+    // Use Wireframe mode
+    // default is GL_FILL
+    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     // deltaTime variables
     // -------------------
@@ -102,7 +114,12 @@ int main(int argc, char *argv[])
         // ------
         glClearColor(0.0f, 0.0f, 0.0f, 1.0f); // specify clear values for the color buffers
         glClear(GL_COLOR_BUFFER_BIT); // clear buffers to preset values, glClear sets the bitplane area of the window to values previously selected by glClearColor, glClearDepth, and glClearStencil. 
-        _00Triangle_Ins.Display();
+        
+        // Step 2: Rendering
+        {
+            // _00Triangle_Ins.Display();
+            _01Rectangle_Ins.Display();
+        }
 
         // Swaps the front and back buffers of the specified window. 
         /***********************************************************************************
