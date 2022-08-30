@@ -12,6 +12,8 @@
 #include <GLFW/glfw3.h>
 
 #include <iostream>
+
+#include "utils.h"
 #include "00.triangle.h"
 #include "01.rectangle.h"
 
@@ -59,6 +61,7 @@ int main(int argc, char *argv[])
         std::cout << "Failed to initialize GLAD" << std::endl;
         return -1;
     }
+    Utils::Print();
 
     // Step 1:
     {
@@ -144,6 +147,7 @@ int main(int argc, char *argv[])
     glfwDestroyWindow(window);
 
     std::cout << "Ready to Exit..." << std::endl;
+
     // Terminates the GLFW library. 
     // This function destroys all remaining windows and cursors, restores any modified gamma ramps and frees any other allocated resources. 
     glfwTerminate();
