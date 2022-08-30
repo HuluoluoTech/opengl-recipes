@@ -16,6 +16,7 @@
 #include "utils.h"
 #include "00.triangle.h"
 #include "01.rectangle.h"
+#include "02.Uniform.h"
 
 // GLFW function declarations
 void FramebufferSizeCallback(GLFWwindow* window, int width, int height);
@@ -31,8 +32,9 @@ const unsigned int SCREEN_HEIGHT = 600;
  * recipes ins
  * 
  * *****************************/
-_00Triangle _00Triangle_Ins;
-_01Rectangle _01Rectangle_Ins;
+// _00Triangle _00Triangle_Ins;
+// _01Rectangle _01Rectangle_Ins;
+_02Uniform _02Uniform_Ins;
 
 int main(int argc, char *argv[])
 {
@@ -68,8 +70,8 @@ int main(int argc, char *argv[])
         // _00Triangle_Ins.LoadShader();
         // _00Triangle_Ins.GenBuffer();
 
-        _01Rectangle_Ins.LoadShader();
-        _01Rectangle_Ins.GenBuffer();
+        _02Uniform_Ins.LoadShader();
+        _02Uniform_Ins.GenBuffer();
     }
 
     // sets the key callback of the specified window, which is called when a key is pressed, repeated or released.
@@ -93,7 +95,7 @@ int main(int argc, char *argv[])
 
     // Use Wireframe mode
     // default is GL_FILL
-    glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     // deltaTime variables
     // -------------------
@@ -121,7 +123,7 @@ int main(int argc, char *argv[])
         // Step 2: Rendering
         {
             // _00Triangle_Ins.Display();
-            _01Rectangle_Ins.Display();
+            _02Uniform_Ins.Display();
         }
 
         // Swaps the front and back buffers of the specified window. 
